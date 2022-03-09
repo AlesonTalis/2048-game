@@ -1,0 +1,75 @@
+*,*::after,*::before
+{
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+:root
+{
+  --bg: #333;
+  --gd: #ccc;
+  --cl: #aaa;
+
+  font-size: 7.5vmin;
+}
+
+body
+{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+  background-color: var(--bg);
+}
+
+#grid-area
+{
+  background-color: var(--gd);
+  border-radius: 1vmin;
+  padding: var(--cell-gap);
+  position: relative;
+  
+  display: grid;
+  grid-template-columns: repeat(var(--grid-size), var(--cell-size));
+  grid-template-rows: repeat(var(--grid-size), var(--cell-size));
+  gap: var(--cell-gap);
+}
+
+.cell
+{
+  background-color: var(--cl);
+  border-radius: 1vmin;
+}
+
+.tile
+{
+  /* --x: 1;
+  --y: 1;
+  --bg-lg: 80%;
+  --tx-lg: 20%; */
+
+  position: absolute;
+  display: grid;
+  place-items: center;
+  width: var(--cell-size);
+  height: var(--cell-size);
+  border-radius: 1vmin;
+  font-weight: bold;
+
+  top: calc(var(--y) * (var(--cell-size) + var(--cell-gap)) + var(--cell-gap));
+  left: calc(var(--x) * (var(--cell-size) + var(--cell-gap)) + var(--cell-gap));
+
+  background-color: hsl(200, 50%, var(--bg-lg));
+  color:hsl(200, 50%, var(--tx-lg));
+
+  animation: show 200ms ease-in-out;
+  transition: 100ms ease-in-out;
+}
+
+@keyframes show {
+  0% {
+    opacity: 0.5;
+    transform: scale(0);
+  }
+}
